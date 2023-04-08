@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CoreLibrary.Pages.Base;
+﻿using CoreLibrary.Pages.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 
@@ -30,7 +25,7 @@ namespace CoreLibrary.Pages
         /// <returns></returns>
         public ProductInfoPage VerifySpecificProductDisplayed(string productId)
         {
-            if( SpecificProductID.Text == productId ) 
+            if (SpecificProductID.Text == productId)
                 Assert.IsTrue(SpecificProductID.Displayed);
 
             return ProductInfoPage;

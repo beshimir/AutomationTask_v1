@@ -1,6 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CoreLibrary.Pages.Base;
 using OpenQA.Selenium;
-using CoreLibrary.Pages.Base;
 
 namespace CoreLibrary.Pages
 {
@@ -20,7 +19,7 @@ namespace CoreLibrary.Pages
         {
             if (ListAllItemsButton.Displayed)
                 ListAllItemsButton.Click();
-            
+
             return AllItemsPage;
         }
 

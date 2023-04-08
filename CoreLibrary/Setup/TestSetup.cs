@@ -1,11 +1,11 @@
-﻿using CoreLibrary.Extras;
+﻿using CoreLibrary.Data;
+using CoreLibrary.Extras;
 using CoreLibrary.Pages;
+using CoreLibrary.Pages.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using CoreLibrary.Data;
-using CoreLibrary.Pages.Base;
 
 namespace CoreLibrary.Setup
 {
@@ -13,9 +13,7 @@ namespace CoreLibrary.Setup
     {
 
         #region Intializing variables
-        //private static IWebDriver driverInstance;
         protected static IWebDriver DriverInstance { get; set; }
-        //private static string WEBSITE_URL = "";
         #endregion
 
         /// <summary>
@@ -25,7 +23,8 @@ namespace CoreLibrary.Setup
         public void TestInitialize()
         {
 
-            switch ( ConfigData.TypeOfBrowser ) {
+            switch (ConfigData.TypeOfBrowser)
+            {
                 case "Chrome":
                     DriverInstance = new ChromeDriver();
                     break;
@@ -46,7 +45,7 @@ namespace CoreLibrary.Setup
         {
             DriverInstance.Close();
             DriverInstance.Quit();
-            
+
         }
 
         [ClassCleanup]
@@ -54,7 +53,7 @@ namespace CoreLibrary.Setup
         {
             DriverInstance.Dispose();
             // Just to be extra sure that the driver is closed...
-            System.Diagnostics.Process.Start("C:/Users/HarisBerilo/Desktop/kill_drivers.bat");
+            // System.Diagnostics.Process.Start("C:/Users/HarisBerilo/Desktop/kill_drivers.bat");
         }
 
         /// <summary>
