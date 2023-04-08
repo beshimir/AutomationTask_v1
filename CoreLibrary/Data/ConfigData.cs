@@ -3,7 +3,7 @@
     public class ConfigData
     {
         private static string typeOfBrowser = "Firefox";
-        private static string filePathOfApplication = "C:\\Users\\HarisBerilo\\Desktop\\Test Automation Task\\Application\\EHS.html";
+        private static string filePathOfApplication = "C:\\Users\\HarisBerilo\\source\\repos\\TestTestingFramework\\Website\\Application\\EHS.html";
         private static string userStory2ProductID = "STD 3";
         private static string userStory3ProductID = "STD 1";
         /// <summary>
