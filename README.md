@@ -6,8 +6,9 @@ My proposed framework with appropriate tests for the given task.
 ## Note about task
 I did not understand the paragraph in the description, quote: 
 > * "Important: Do not implement the test tool itself, only the tests and their supporting
-framework. Use the API supplied for reference on what methods are available." *
-as it would have been nearly impossible to implement some testing methods using only Exists, Read, Write etc. without knowing how they work in detail.
+framework. Use the API supplied for reference on what methods are available." * <
+
+As it would have been nearly impossible to implement some testing methods using only Exists, Read, Write etc. without knowing how they work in detail.
 
 ## Note about proposed solutions
 There are many things to improve in this, but I would like to list some improvements I would've liked to make if more time was available:
