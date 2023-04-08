@@ -15,4 +15,5 @@ There are many things to improve in this, but I would like to list some improvem
 - Instead of using the Data/ConfigData class for handling test data, a class to parse JSON to actual data would have been more useful.
 - ChromeDriver did not work for me in particular on my machine, so I used Firefox. Implementation would(should) not change significantly if Chrome was used.
 - ID and Name elements were fetched where possible, but an XPath was used to fetch the buttons since I could not figure out a more optimal way to make the method reusable/not use text on the page.
+- The file path in Data/ConfigData could have been made a relative path to make the solution more portable and flexible.
 - Waits could be implemented to make the test execution more visible and error-proof.
