@@ -74,7 +74,7 @@ namespace CoreLibrary.Setup
             Console.WriteLine("Navigated to URL!");
             DriverInstance.Manage().Window.Maximize();
             DriverInstance.WaitForPageToLoad();
-            Console.WriteLine("Opened allegedly!");
+            Console.WriteLine("Opened page!");
 
             return LandingPage.GetLandingPage(); // a bit ugly...
         }

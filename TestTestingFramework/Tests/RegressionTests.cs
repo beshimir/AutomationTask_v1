@@ -6,7 +6,7 @@ using CoreLibrary.Setup;
 namespace TestTestingFramework.Tests
 {
     [TestClass]
-    public class SmokeTests : TestSetup
+    public class RegressionTests : TestSetup
     {
         /// <summary>
         /// User story 1
@@ -17,13 +17,13 @@ namespace TestTestingFramework.Tests
         [TestMethod]
         public void US_1_TestListOfAllItemsAvailability()
         {
-
+            Console.WriteLine("Starting 1st User Story!");
             BaseClass
                 .OpenWebsite()
                 .ClickOnListAllItems()
                 .VerifyListOfAllItemsDisplayed();
 
-
+            Console.WriteLine("Ended test!");
         }
 
         /// <summary>
@@ -36,6 +36,7 @@ namespace TestTestingFramework.Tests
         [TestMethod]
         public void US_2_TestProductInfoAvailability()
         {
+            Console.WriteLine("Starting 2nd User Story!");
             // UserStory2ProductID is used as the product in question.
             // Editable in ../../CoreLibrary/Data/ConfigData.cs
             BaseClass
@@ -44,7 +45,7 @@ namespace TestTestingFramework.Tests
                 .ClickOnSpecificProduct(ConfigData.UserStory2ProductID)
                 .VerifySpecificProductDisplayed(ConfigData.UserStory2ProductID);
 
-
+            Console.WriteLine("Ended test!");
         }
 
         /// <summary>
@@ -57,7 +58,8 @@ namespace TestTestingFramework.Tests
         [TestMethod]
         public void US_3_TestFindFunctionalityAvailability()
         {
-            // UserStory2ProductID is used as the product in question.
+            Console.WriteLine("Starting 3rd User Story!");
+            // UserStory3ProductID is used as the product in question.
             // Editable in ../../CoreLibrary/Data/ConfigData.cs
             BaseClass
                 .OpenWebsite()
@@ -65,8 +67,7 @@ namespace TestTestingFramework.Tests
                 .ClickOnFindButton()
                 .VerifySpecificProductDisplayed(ConfigData.UserStory3ProductID);
 
-
+            Console.WriteLine("Ended test!");
         }
-
     }
 }
