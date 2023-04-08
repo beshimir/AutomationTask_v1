@@ -1,0 +1,62 @@
+<html>
+<style>
+table { border: 1px solid black; border-collapse:collapse; background-color:lightgray; outline:blue outset 3px; }
+th { background-color:blue; color:white; text-align:left; padding:3px; }
+td { padding:3px; }
+.button { width:120px; }
+.warning { color:red;  font-weight: bold; }
+.label { text-align:right; }
+</style>
+<script>
+var urlParams = {};
+(function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        query  = window.location.search.substring(1);
+
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
+
+ProductId = urlParams["ProductIdField"];
+
+db = {
+	"STD 1":{"Name":"EHS Item 1", "Material":"Bronze", "Manufacturer":"Boston Item LLC", "RetailPrice":"$53.50"},
+	"STD 2":{"Name":"EHS Item 2", "Material":"Bronze", "Manufacturer":"Boston Item LLC", "RetailPrice":"$37.10"},
+	"STD 3":{"Name":"EHS Item 3", "Material":"Zinc", "Manufacturer":"Boston Item LLC", "RetailPrice":"$93.00"},
+	"STD 4":{"Name":"EHS Item 4", "Material":"Plywood", "Manufacturer":"Boston Item LLC", "RetailPrice":"$22.00"},
+	"STD 5":{"Name":"EHS Item 5", "Material":"Air", "Manufacturer":"New York Item LLC", "RetailPrice":"$1.95"},
+	"STD 6":{"Name":"EHS Item 6", "Material":"Copper", "Manufacturer":"New York Item LLC", "RetailPrice":"$5.00"},
+	"STD 7":{"Name":"EHS Item 7", "Material":"Uranium", "Manufacturer":"New York Item LLC", "RetailPrice":"$32.00"},
+	"STD 8":{"Name":"EHS Item 8", "Material":"Gold", "Manufacturer":"New York Item LLC", "RetailPrice":"$142.00"},
+	"STD 9":{"Name":"EHS Item 9", "Material":"Plastic", "Manufacturer":"Svedala Prylfabrik AB", "RetailPrice":"$3.50"}
+}
+</script>
+<Body>
+<table border="0">
+<tr><th colspan=2>EHS - Item</th></tr>
+<tr><td colspan=2>Product id: <span id="ProductId"></span></td><tr>
+<tr><td class="label">Name</td><td><input type="text" id="NameField" /></td><tr>
+<tr><td class="label">Material</td><td><input type="text" id="MaterialField" /></td><tr>
+<tr><td class="label">Manufacturer</td><td><input type="text" id="ManufacturerField" /></td><tr>
+<tr><td class="label">Retail price</td><td><input type="text" id="RetailPriceField" /></td><tr>
+</table>
+</Body>
+<script>
+
+if( db[ProductId])
+{
+	document.getElementById("ProductId").innerText = ProductId;
+	document.getElementById("NameField").value = db[ProductId]["Name"];
+	document.getElementById("MaterialField").value = db[ProductId]["Material"];
+	document.getElementById("ManufacturerField").value = db[ProductId]["Manufacturer"];
+	document.getElementById("RetailPriceField").value = db[ProductId]["RetailPrice"];
+}else{
+	document.getElementById("ProductId").innerText = "Not Found!";
+	document.getElementById("ProductId").className = "warning";
+}
+
+</script>
+</html>
