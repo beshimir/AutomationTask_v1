@@ -10,6 +10,8 @@ framework. Use the API supplied for reference on what methods are available." *
 
 As it would have been nearly impossible to implement some testing methods using only Exists, Read, Write etc. without knowing how they work in detail.
 
+I thought about implementing all the documented ExecutionTool methods and trying to do the testing like that, but I did not think it'd be of much use.
+
 ## Note about proposed solutions
 There are many things to improve in this, but I would like to list some improvements I would've liked to make if more time was available:
 - Instead of using the Data/ConfigData class for handling test data, a class to parse JSON to actual data would have been more useful.
