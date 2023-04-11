@@ -42,8 +42,8 @@ namespace TestTestingFramework.Tests
             BaseClass
                 .OpenWebsite()
                 .ClickOnListAllItems()
-                .ClickOnSpecificProduct(ConfigData.UserStory2ProductID)
-                .VerifySpecificProductDisplayed(ConfigData.UserStory2ProductID);
+                .ClickOnSpecificProduct(TestData["US_2_TestID"])
+                .VerifySpecificProductDisplayed(TestData["US_2_TestID"]);
 
             Console.WriteLine("Ended test!");
         }
@@ -63,9 +63,9 @@ namespace TestTestingFramework.Tests
             // Editable in ../../CoreLibrary/Data/ConfigData.cs
             BaseClass
                 .OpenWebsite()
-                .EnterProductIdIntoSearchBar(ConfigData.UserStory3ProductID)
+                .EnterProductIdIntoSearchBar(TestData["US_3_TestID"])
                 .ClickOnFindButton()
-                .VerifySpecificProductDisplayed(ConfigData.UserStory3ProductID);
+                .VerifySpecificProductDisplayed(TestData["US_3_TestID"]);
 
             Console.WriteLine("Ended test!");
         }

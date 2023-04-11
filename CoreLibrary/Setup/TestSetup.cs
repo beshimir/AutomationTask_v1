@@ -14,6 +14,10 @@ namespace CoreLibrary.Setup
 
         #region Intializing variables
         protected static IWebDriver DriverInstance { get; set; }
+        /// <summary>
+        /// Variable holding all test data
+        /// </summary>
+        public static Dictionary<string, string> TestData;
         #endregion
 
         /// <summary>
@@ -22,8 +26,8 @@ namespace CoreLibrary.Setup
         [TestInitialize]
         public void TestInitialize()
         {
-
-            switch (ConfigData.TypeOfBrowser)
+            TestData = Extensions.JSONConverter();
+            switch (TestData["browser"])
             {
                 case "Chrome":
                     DriverInstance = new ChromeDriver();
@@ -34,7 +38,6 @@ namespace CoreLibrary.Setup
             }
 
             BaseClass.InitializeApplicationPages();
-
         }
 
         /// <summary>
@@ -70,7 +73,7 @@ namespace CoreLibrary.Setup
         {
 
             Console.WriteLine("Opening website!");
-            DriverInstance.Navigate().GoToUrl("file:///" + ConfigData.FilePathOfApplication);  // TODO: would be better to use relative path
+            DriverInstance.Navigate().GoToUrl("file:///" + TestData["websiteFilePath"]);  // TODO: would be better to use relative path
             Console.WriteLine("Navigated to URL!");
             DriverInstance.Manage().Window.Maximize();
             DriverInstance.WaitForPageToLoad();
