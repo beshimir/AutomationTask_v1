@@ -1,5 +1,5 @@
 {
-    "__JSONdescription__": "This JSON file outlines the data used for tests regarding US1, US2 and US3.",
+    "_description_of_document_": "This JSON file outlines the data used for tests regarding US1, US2 and US3.",
     "browser": "Firefox",
     "websiteFilePath": "C:\\Users\\HarisBerilo\\source\\repos\\TestTestingFramework\\Website\\Application\\EHS.html",
     "US_2_TestID": "STD 4",

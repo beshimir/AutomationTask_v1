@@ -1,5 +1,4 @@
-﻿using CoreLibrary.Data;
-using CoreLibrary.Extras;
+﻿using CoreLibrary.Extras;
 using CoreLibrary.Pages;
 using CoreLibrary.Pages.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,6 +12,9 @@ namespace CoreLibrary.Setup
     {
 
         #region Intializing variables
+        /// <summary>
+        /// The driver instance
+        /// </summary>
         protected static IWebDriver DriverInstance { get; set; }
         /// <summary>
         /// Variable holding all test data
@@ -26,7 +28,10 @@ namespace CoreLibrary.Setup
         [TestInitialize]
         public void TestInitialize()
         {
+            // Initializes all test data in this variable
             TestData = Extensions.JSONConverter();
+
+            // Decides which browser to use
             switch (TestData["browser"])
             {
                 case "Chrome":
@@ -37,6 +42,7 @@ namespace CoreLibrary.Setup
                     break;
             }
 
+            // Initializes all pages for POM
             BaseClass.InitializeApplicationPages();
         }
 

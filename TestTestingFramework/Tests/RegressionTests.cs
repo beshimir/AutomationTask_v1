@@ -1,5 +1,4 @@
-﻿using CoreLibrary.Data;
-using CoreLibrary.Pages.Base;
+﻿using CoreLibrary.Pages.Base;
 using CoreLibrary.Setup;
 
 
@@ -37,8 +36,7 @@ namespace TestTestingFramework.Tests
         public void US_2_TestProductInfoAvailability()
         {
             Console.WriteLine("Starting 2nd User Story!");
-            // UserStory2ProductID is used as the product in question.
-            // Editable in ../../CoreLibrary/Data/ConfigData.cs
+
             BaseClass
                 .OpenWebsite()
                 .ClickOnListAllItems()
@@ -59,8 +57,7 @@ namespace TestTestingFramework.Tests
         public void US_3_TestFindFunctionalityAvailability()
         {
             Console.WriteLine("Starting 3rd User Story!");
-            // UserStory3ProductID is used as the product in question.
-            // Editable in ../../CoreLibrary/Data/ConfigData.cs
+
             BaseClass
                 .OpenWebsite()
                 .EnterProductIdIntoSearchBar(TestData["US_3_TestID"])
