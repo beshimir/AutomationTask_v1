@@ -1,5 +1,7 @@
-﻿using CoreLibrary.Pages.Base;
+﻿using System.Runtime.CompilerServices;
+using CoreLibrary.Pages.Base;
 using OpenQA.Selenium;
+using NUnit.Framework;
 
 namespace CoreLibrary.Pages
 {
@@ -7,38 +9,50 @@ namespace CoreLibrary.Pages
     {
 
         #region Locators
-        private IWebElement ListAllItemsButton => GetElementById("ListAllItemsButton");
-        private IWebElement SearchBar => GetElementById("ProductIdField");
-        private IWebElement FindButton => GetElementById("FindItemButton");
+        private IWebElement HeadlineLogo => GetElementByXPath("//h1[text()=\"WeShare\"]");
+        private IWebElement EmailField => GetElementById("email");
+        private IWebElement SubmitField => GetElementById("submit");
+        private IWebElement LoggedOutText => GetElementByXPath("//p[contains(text(), \"not logged in\")]");
         #endregion
 
         ////////////////////////////////////////////////////////////////////////////////////////
 
-        #region Navigation/clicking                                                         
-        public AllItemsPage ClickOnListAllItems()
+        #region Navigation/clicking
+        /// <summary>
+        /// Logs in the desired user
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public AllExpensesPage LoginToWebpage(string email)
         {
-            if (ListAllItemsButton.Displayed)
-                ListAllItemsButton.Click();
+            EmailField.SendKeys(email);
+            SubmitField.Click();
 
-            return AllItemsPage;
+            return AllExpensesPage;
+        }
+        #endregion
+
+        #region Validation                                                         
+        /// <summary>
+        /// Asserts that the logo is displayed on the page, if not, throws an error
+        /// </summary>
+        /// <returns></returns>
+        public LandingPage ValidateHeadlineLogoDisplayed()
+        {
+            Assert.IsTrue(HeadlineLogo.Displayed);
+
+            return this;
         }
 
-        public ProductInfoPage ClickOnFindButton()
+        /// <summary>
+        /// Validate that the user has been logged out by the displayed text
+        /// </summary>
+        /// <returns></returns>
+        public LandingPage ValidateUserLoggedOut()
         {
-            if (FindButton.Displayed)
-                FindButton.Click();
+            Assert.IsTrue(LoggedOutText.Displayed, "User was not logged out. Check that the text was not changed?");
 
-            return ProductInfoPage;
-        }
-        public LandingPage EnterProductIdIntoSearchBar(string productId)
-        {
-            if (SearchBar.Displayed)
-            {
-                SearchBar.Click();
-                SearchBar.SendKeys(productId);
-            }
-
-            return LandingPage;
+            return this;
         }
         #endregion
 

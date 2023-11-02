@@ -17,7 +17,7 @@ namespace CoreLibrary.Extras
             wait.Until(driver1 => ((IJavaScriptExecutor)browser).ExecuteScript("return document.readyState;").Equals("complete"));
         }
 
-
+/*
         public static Dictionary<string, string> JSONConverter()
         {
             string filePath = "C:\\Users\\HarisBerilo\\source\\repos\\TestTestingFramework\\CoreLibrary\\Data\\config.json";
@@ -37,5 +37,6 @@ namespace CoreLibrary.Extras
 
             return config;
         }
+  */
     }
 }

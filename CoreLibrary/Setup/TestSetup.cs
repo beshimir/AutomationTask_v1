@@ -1,10 +1,10 @@
 ﻿using CoreLibrary.Extras;
 using CoreLibrary.Pages;
 using CoreLibrary.Pages.Base;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using NUnit.Framework;
 
 namespace CoreLibrary.Setup
 {
@@ -25,14 +25,14 @@ namespace CoreLibrary.Setup
         /// <summary>
         /// Main method that intializes all test-related methods
         /// </summary>
-        [TestInitialize]
+        [SetUp]
         public void TestInitialize()
         {
             // Initializes all test data in this variable
-            TestData = Extensions.JSONConverter();
+            //TestData = Extensions.JSONConverter();
 
             // Decides which browser to use
-            switch (TestData["browser"])
+            switch ("Chrome")
             {
                 case "Chrome":
                     DriverInstance = new ChromeDriver();
@@ -49,17 +49,12 @@ namespace CoreLibrary.Setup
         /// <summary>
         /// Last method to be executed; cleaning up after a test
         /// </summary>
-        [TestCleanup]
+        [TearDown]
         public void TestCleanup()
         {
             DriverInstance.Close();
             DriverInstance.Quit();
 
-        }
-
-        [ClassCleanup]
-        public void ClassCleanup()
-        {
             DriverInstance.Dispose();
             // Just to be extra sure that the driver is closed...
             // System.Diagnostics.Process.Start("C:/Users/HarisBerilo/Desktop/kill_drivers.bat");
@@ -79,13 +74,13 @@ namespace CoreLibrary.Setup
         {
 
             Console.WriteLine("Opening website!");
-            DriverInstance.Navigate().GoToUrl("file:///" + TestData["websiteFilePath"]);  // TODO: would be better to use relative path
+            DriverInstance.Navigate().GoToUrl("http://localhost:5050");
             Console.WriteLine("Navigated to URL!");
             DriverInstance.Manage().Window.Maximize();
             DriverInstance.WaitForPageToLoad();
             Console.WriteLine("Opened page!");
 
-            return LandingPage.GetLandingPage(); // a bit ugly...
+            return LandingPage.GetLandingPage();
         }
     }
 }

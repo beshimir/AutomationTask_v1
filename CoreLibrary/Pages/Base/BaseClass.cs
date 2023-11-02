@@ -1,7 +1,5 @@
 ﻿    using OpenQA.Selenium;
     using CoreLibrary.Setup;
-    using OpenQA.Selenium.Support.UI;
-    using CoreLibrary.Extras;
 
     namespace CoreLibrary.Pages.Base
     {
@@ -9,19 +7,24 @@
         {
             #region Initializing elements
             protected static LandingPage LandingPage { get; set; }
-            protected static AllItemsPage AllItemsPage { get; set; }
-            protected static ProductInfoPage ProductInfoPage { get; set; }  
+            protected static AllExpensesPage AllExpensesPage { get; set; }
+            protected static AddNewExpensePage AddNewExpensePage { get; set; }  
+            protected static ExpenseDetailsPage ExpenseDetailsPage { get; set; }
+            protected static PaymentRequestsReceivedPage PaymentRequestsReceivedPage { get; set; }
+            protected static PaymentRequestsSentPage PaymentRequestsSentPage { get; set; }
+            
         
             /// <summary>
             /// Initializes all pages from the webpage
             /// </summary>
             public static void InitializeApplicationPages()
             {
-                Console.WriteLine("Initializing pages!");
                 LandingPage = new LandingPage();
-                AllItemsPage = new AllItemsPage();
-                ProductInfoPage = new ProductInfoPage();    
-
+                AllExpensesPage = new AllExpensesPage();
+                AddNewExpensePage = new AddNewExpensePage();
+                ExpenseDetailsPage = new ExpenseDetailsPage();   
+                PaymentRequestsReceivedPage = new PaymentRequestsReceivedPage();
+                PaymentRequestsSentPage = new PaymentRequestsSentPage();
             }
 
             /// <summary>

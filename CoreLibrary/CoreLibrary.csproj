@@ -8,8 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.PageObjects" Version="3.11.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit.Analyzers" Version="3.9.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="111.0.5563.6400" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver.Win64" Version="0.32.2" />
   </ItemGroup>
