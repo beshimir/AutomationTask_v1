@@ -8,6 +8,9 @@ namespace TestTestingFramework.Tests
     [TestFixture]
     public class UITests : TestSetup
     {
+        // General/global data for test
+        private string newExpenseName = Guid.NewGuid().ToString();
+
         /// <summary>
         /// User story 1
         /// </summary>
@@ -24,7 +27,8 @@ namespace TestTestingFramework.Tests
         /// User story 2
         /// </summary>
         [Order(2), TestCase("student1@wethinkcode.co.za"), Description("Validate that a logged in user can log out")]
-        public void Test_UserCanLogout(string email) {
+        public void Test_UserCanLogout(string email)
+        {
             BaseClass
                 .OpenWebsite()
                 .LoginToWebpage(email)
@@ -36,60 +40,68 @@ namespace TestTestingFramework.Tests
         /// <summary>
         /// User story 3
         /// </summary>
-        /// <param name="email"></param>
-        [Order(3), TestCase("student1@wethinkcode.co.za")]
+        [Order(3), TestCase("student1@wethinkcode.co.za"), Description("Validate that the user can add a new expense, and verify that the expense has been added")]
         public void Test_AddNewExpenseAndVerify(string email) {
-            string expense_name = Guid.NewGuid().ToString();
-            string date = DateTime.Now.ToString("dd-M-yyyy");
+            
+            // Data for test
+            string expense_name = newExpenseName;
+            string date = DateTime.Now.ToString("dd/M/yyyy");
             string date_validationFormat = DateTime.Now.ToString("yyyy-M-dd");
             int amount = 100;
+            string amount_validationFormat = "ZAR " + amount + ".00";
 
             BaseClass
                 .OpenWebsite()
                 .LoginToWebpage(email)
                 .ClickOnAddNewExpenseButton()
                 .AddNewExpense(expense_name, date, amount)
-                .ValidateExpenseExists(expense_name, date_validationFormat, "ZAR " + amount + ".00");
+                .ValidateExpenseExists(expense_name, date_validationFormat, amount_validationFormat);
         }
 
         /// <summary>
         /// User story 4
         /// </summary>
-        /// <param name="email"></param>
-        [Order(4), TestCase("student1@wethinkcode.co.za")]
+        [Order(4), TestCase("student1@wethinkcode.co.za"), Description("Validate that the user can add a new payment request, and verify that the payment request has been added")]
         public void Test_AddNewPaymentRequestAndVerify(string email)
         {
+            // Data for test
             string date = DateTime.Now.ToString("dd-M-yyyy");
             string date_validationFormat = DateTime.Now.ToString("yyyy-M-dd");
+            string expense_name = newExpenseName;
+            string expenseTo_email = "student3@wethinkcode.co.za";
+            string expenseTo_email_validationFormat = CoreLibrary.Extras.Extensions.ExtractUsernameFromEmail_API(expenseTo_email);
+            int amount = 1;
+            string amount_validationFormat = "ZAR " + amount + ".00";
 
             BaseClass
                 .OpenWebsite()
                 .LoginToWebpage(email)
-                .ClickOnExpenseName("Dinner also")
+                .ClickOnExpenseName(expense_name)
                 .ValidatePaymentRequestFormDisplayed()
-                .AddNewPaymentRequest("student3@wethinkcode.co.za", "1", date)
-                .ValidatePaymentRequestExists("Student3", "ZAR 1.00", date_validationFormat);
+                .AddNewPaymentRequest(expenseTo_email, amount, date)
+                .ValidatePaymentRequestExists(expenseTo_email_validationFormat, amount_validationFormat, date_validationFormat);
         }
 
         /// <summary>
         /// User story 5
         /// </summary>
-        /// <param name="email"></param>
-        [Order(5), TestCase("student1@wethinkcode.co.za")]
+        [Order(5), TestCase("student1@wethinkcode.co.za"), Description("Validate that the user can open an expense based on the expense name")]
         public void Test_OpenSpecificExpense(string email)
         {
+            // Data for test
+            string expense_name = newExpenseName;
+            
             BaseClass
                 .OpenWebsite()
                 .LoginToWebpage(email)
-                .ClickOnExpenseName("Dinner also")
-                .ValidateExpenseName("Dinner also");
+                .ClickOnExpenseName(expense_name)
+                .ValidateExpenseName(expense_name);
         }
 
         /// <summary>
         /// User story 6
         /// </summary>
-        /// <param name="email"></param>
-        [Order(6), TestCase("student1@wethinkcode.co.za")]
+        [Order(6), TestCase("student1@wethinkcode.co.za"),  Description("Validate that the user can open the payment requests sent tab and view the payment requests")]
         public void Test_OpenPaymentRequestsSent(string email)
         {
             BaseClass
@@ -102,8 +114,7 @@ namespace TestTestingFramework.Tests
         /// <summary>
         /// User story 7
         /// </summary>
-        /// <param name="email"></param>
-        [Order(7), TestCase("student1@wethinkcode.co.za")]
+        [Order(7), TestCase("student1@wethinkcode.co.za"),  Description("Validate that the user can open the payment requests received tab and view the payment requests")]
         public void Test_OpenOutgoingPaymentRequests(string email)
         {
             BaseClass
@@ -112,7 +123,5 @@ namespace TestTestingFramework.Tests
                 .ClickOnPaymentRequestsReceived()
                 .ValidatePaymentRequestsReceivedPageOpened();
         }
-
-
     }
 }

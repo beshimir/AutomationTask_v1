@@ -16,10 +16,6 @@ namespace CoreLibrary.Setup
         /// The driver instance
         /// </summary>
         protected static IWebDriver DriverInstance { get; set; }
-        /// <summary>
-        /// Variable holding all test data
-        /// </summary>
-        public static Dictionary<string, string> TestData;
         #endregion
 
         /// <summary>
@@ -28,9 +24,7 @@ namespace CoreLibrary.Setup
         [SetUp]
         public void TestInitialize()
         {
-            // Initializes all test data in this variable
-            //TestData = Extensions.JSONConverter();
-
+            // Ideally make this get an environment variable
             // Decides which browser to use
             switch ("Chrome")
             {
@@ -68,7 +62,6 @@ namespace CoreLibrary.Setup
         {
             return DriverInstance;
         }
-
 
         public static LandingPage OpenWebsite()
         {

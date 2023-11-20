@@ -25,10 +25,10 @@ namespace CoreLibrary.Pages
         /// <param name="amount"></param>
         /// <param name="due_date"></param>
         /// <returns></returns>
-        public ExpenseDetailsPage AddNewPaymentRequest(string email, string amount, string due_date)
+        public ExpenseDetailsPage AddNewPaymentRequest(string email, int amount, string due_date)
         {
             PaymentRequestEmailField.SendKeys(email);
-            PaymentRequestAmountField.SendKeys(amount);
+            PaymentRequestAmountField.SendKeys(amount.ToString());
             PaymentRequestDueDateField.SendKeys(due_date);
             SubmitButton.Click();
 

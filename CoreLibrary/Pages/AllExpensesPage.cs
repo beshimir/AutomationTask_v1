@@ -104,30 +104,24 @@ namespace CoreLibrary.Pages
             string actual_date = "";
             string actual_amount = "";
 
-            foreach(IWebElement expense in ListOfExpenses)
-            {
-                try
+                // Iterate through each expense and compare the values to the one that needs to be validated
+                for(int i = 1; i <= ListOfExpenses.Count; i++)
                 {
-                    actual_description = expense.FindElement(By.XPath("//a[contains(@id, \"payment_request\")]")).Text;
-                    actual_date = expense.FindElement(By.XPath("//td[@class=\"date\"]")).Text;
-                    actual_amount = expense.FindElement(By.XPath("//td[@class=\"money\"]")).Text;
-                    
-                    Assert.AreEqual(description, actual_description, "Expense description is not equal.");
-                    Assert.AreEqual(date, actual_date, "Expense dates are not equal.");
-                    Assert.AreEqual(amount, actual_amount, "Expense amount is not equal.");
+                    actual_description = GetDriver().FindElement(By.XPath($"(//a[contains(@id, \"payment_request\")])[{i}]")).Text;
+                    actual_date = GetDriver().FindElement(By.XPath($"(//td[@class=\"date\"])[{i}]")).Text;
+                    actual_amount = GetDriver().FindElement(By.XPath($"(//td[contains(@id, \"amount\")])[{i}]")).Text;
+                
+                    // Probably a better way of doing this...
+                    if (description.Equals(actual_description) && date.Equals(actual_date) && amount.Equals(actual_amount))
+                    {
+                        Assert.Pass();
+                    }
+                    else
+                        continue;
+                }
 
-                    break;
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
-                finally
-                {
-                    Assert.Fail("No appropriate expense was found.");
-                }
-            }
-
+                // If the function doesnt return anything until here, there is no cooresponding expense.
+                Assert.Fail("There is no cooresponding expense.");
             
             return this;
         }
