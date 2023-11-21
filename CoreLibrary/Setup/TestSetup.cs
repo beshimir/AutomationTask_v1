@@ -50,8 +50,6 @@ namespace CoreLibrary.Setup
             DriverInstance.Quit();
 
             DriverInstance.Dispose();
-            // Just to be extra sure that the driver is closed...
-            // System.Diagnostics.Process.Start("C:/Users/HarisBerilo/Desktop/kill_drivers.bat");
         }
 
         /// <summary>
