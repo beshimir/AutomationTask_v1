@@ -4,7 +4,7 @@ using CoreLibrary.Models.Base;
 using NUnit.Framework;
 using CoreLibrary.API;
 
-namespace TestTestingFramework.Tests
+namespace WeShareTests.Tests
 {
     public class APITests : TestSetup
     {        

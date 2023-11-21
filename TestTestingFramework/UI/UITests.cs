@@ -3,7 +3,7 @@ using CoreLibrary.Setup;
 using NUnit.Framework;
 
 
-namespace TestTestingFramework.Tests
+namespace WeShareTests.Tests
 {
     [TestFixture]
     public class UITests : TestSetup

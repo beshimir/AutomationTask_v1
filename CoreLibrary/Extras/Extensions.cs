@@ -31,27 +31,5 @@ namespace CoreLibrary.Extras
 
             return username;
         }
-
-/*
-        public static Dictionary<string, string> JSONConverter()
-        {
-            string filePath = "C:\\Users\\HarisBerilo\\source\\repos\\TestTestingFramework\\CoreLibrary\\Data\\config.json";
-
-            // Read JSON data from file
-            string json = File.ReadAllText(filePath);
-
-            Dictionary<string, string> config = new Dictionary<string,string>();
-            // Deserialize JSON to C# Dictionary
-            config = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-
-            // Access values in the Dictionary
-            foreach (var keyValuePair in config)
-            {
-                Console.WriteLine($"Key: {keyValuePair.Key}, Value: {keyValuePair.Value}");
-            }
-
-            return config;
-        }
-  */
     }
 }

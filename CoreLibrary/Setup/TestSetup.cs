@@ -63,15 +63,15 @@ namespace CoreLibrary.Setup
             return DriverInstance;
         }
 
+        /// <summary>
+        /// Opens the webpage to the appropriate screen
+        /// </summary>
+        /// <returns></returns>
         public static LandingPage OpenWebsite()
         {
-
-            Console.WriteLine("Opening website!");
             DriverInstance.Navigate().GoToUrl("http://localhost:5050");
-            Console.WriteLine("Navigated to URL!");
             DriverInstance.Manage().Window.Maximize();
             DriverInstance.WaitForPageToLoad();
-            Console.WriteLine("Opened page!");
 
             return LandingPage.GetLandingPage();
         }
